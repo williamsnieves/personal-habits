@@ -55,7 +55,7 @@ export function HabitList() {
     return (
         <div className="bg-white rounded-3xl p-6 shadow-soft">
             <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-bold text-text-primary">Today's Todos</h2>
+                <h2 className="text-xl font-bold text-text-primary">Today&apos;s Todos</h2>
                 <button className="text-sm text-text-secondary hover:text-primary">View Details</button>
             </div>
 
@@ -86,8 +86,8 @@ export function HabitList() {
                             <button
                                 onClick={() => toggleHabit(habit.id)}
                                 className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${isCompleted
-                                        ? 'bg-green-500 text-white'
-                                        : 'border-2 border-gray-200 text-transparent hover:border-primary'
+                                    ? 'bg-green-500 text-white'
+                                    : 'border-2 border-gray-200 text-transparent hover:border-primary'
                                     }`}
                             >
                                 <Check size={16} strokeWidth={3} />

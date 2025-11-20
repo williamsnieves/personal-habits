@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Search, Bell, MessageSquare } from 'lucide-react';
 
 export function Header() {
@@ -28,10 +29,14 @@ export function Header() {
                     <button className="p-2 text-text-secondary hover:bg-gray-100 rounded-full transition-colors">
                         <MessageSquare size={20} />
                     </button>
-                    <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow-sm">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User" />
-                    </div>
-                </div>
+                    <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow-sm relative">
+                        <Image
+                            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+                            alt="User Avatar"
+                            width={40}
+                            height={40}
+                        />
+                    </div>                </div>
             </div>
         </header>
     );
