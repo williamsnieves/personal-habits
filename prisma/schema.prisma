@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Habit {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  frequency   String     // e.g., "daily", "weekly"
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  logs        HabitLog[]
+}
+
+model HabitLog {
+  id        String   @id @default(cuid())
+  habitId   String
+  habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+  date      DateTime // The date the habit was performed (or should have been)
+  status    String   // "completed", "skipped", "failed"
+  createdAt DateTime @default(now())
+
+  @@unique([habitId, date]) // Ensure one log per habit per date
+}

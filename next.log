@@ -1,0 +1,37 @@
+
+> personal-habits@0.1.0 dev
+> next dev
+
+[32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNext.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+[33mPRO FEATURES[0m are enabled for free until [33mMon Nov 24 2025[0m. [36mhttps://console-ninja.com/pro[0m
+
+   ▲ Next.js 16.0.3 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.1.65:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1364ms
+ POST /api/habits 201 in 1649ms (compile: 927ms, render: 722ms)
+ GET /api/habits 200 in 16ms (compile: 4ms, render: 12ms)
+ POST /api/habits/cmi7s0ypu0000y8t8qxs215hd/log 201 in 1152ms (compile: 1133ms, render: 19ms)
+ DELETE /api/habits/cmi7s0ypu0000y8t8qxs215hd 200 in 1070ms (compile: 1055ms, render: 15ms)
+ ○ Compiling / ...
+ GET / 200 in 5.1s (compile: 4.6s, render: 564ms)
+ GET / 200 in 190ms (compile: 4ms, render: 186ms)
+ GET /api/habits 200 in 104ms (compile: 5ms, render: 99ms)
+ GET /api/habits 200 in 12ms (compile: 3ms, render: 10ms)
+ ✓ Compiled in 261ms
+ GET / 200 in 608ms (compile: 387ms, render: 221ms)
+ GET / 200 in 79ms (compile: 10ms, render: 69ms)
+ GET /api/habits 200 in 542ms (compile: 507ms, render: 34ms)
+ GET /api/habits 200 in 21ms (compile: 6ms, render: 14ms)
+ GET /api/habits 200 in 20ms (compile: 5ms, render: 14ms)
+ GET /api/habits 200 in 25ms (compile: 5ms, render: 20ms)
+ ✓ Compiled in 94ms
+ ✓ Compiled in 117ms
+ GET /api/habits 200 in 9ms (compile: 2ms, render: 7ms)
+ GET /api/habits 200 in 7ms (compile: 1923µs, render: 5ms)
+ GET /api/habits 200 in 7ms (compile: 2ms, render: 5ms)
+ GET /api/habits 200 in 8ms (compile: 3ms, render: 5ms)
+[?25h
