@@ -6,6 +6,7 @@ import { Header } from '@/components/Header';
 import { HabitList } from '@/components/HabitList';
 import { CalendarWidget } from '@/components/CalendarWidget';
 import { NewHabitModal } from '@/components/NewHabitModal';
+import { WeatherWidget } from '@/components/WeatherWidget';
 import { Plus } from 'lucide-react';
 
 export default function Home() {
@@ -43,36 +44,7 @@ export default function Home() {
 
           {/* Middle Column */}
           <div className="xl:col-span-1 space-y-8">
-            {/* Weather Widget (Mock) */}
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl p-6 shadow-soft relative overflow-hidden">
-              <div className="flex justify-between items-start relative z-10">
-                <div>
-                  <h3 className="font-bold text-text-primary">Weather</h3>
-                  <div className="flex items-center gap-2 mt-2">
-                    <span className="text-4xl">☀️</span>
-                    <div>
-                      <div className="text-3xl font-bold text-text-primary">12°C</div>
-                      <div className="text-xs text-text-secondary">Sunny</div>
-                    </div>
-                  </div>
-                </div>
-                <button className="text-xs text-text-secondary hover:text-primary">View Details</button>
-              </div>
-              <div className="grid grid-cols-3 gap-4 mt-6 text-xs text-text-secondary relative z-10">
-                <div>
-                  <div className="font-bold text-text-primary">Wind</div>
-                  <div>2-4 km/h</div>
-                </div>
-                <div>
-                  <div className="font-bold text-text-primary">Pressure</div>
-                  <div>102m</div>
-                </div>
-                <div>
-                  <div className="font-bold text-text-primary">Humidity</div>
-                  <div>42%</div>
-                </div>
-              </div>
-            </div>
+            <WeatherWidget />
 
             <div className="bg-white rounded-3xl p-6 shadow-soft">
               <div className="flex justify-between items-center mb-4">
