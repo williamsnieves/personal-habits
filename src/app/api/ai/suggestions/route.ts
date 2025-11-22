@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import prisma from '@/lib/prisma';
+import { Habit, HabitLog } from '@prisma/client';
 
 // Initialize OpenAI client
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY || 'mock-key',
 });
 
-export async function POST(request: Request) {
+export async function POST() {
     try {
         // 1. Check for API Key
         if (!process.env.OPENAI_API_KEY) {
@@ -31,7 +32,7 @@ export async function POST(request: Request) {
         });
 
         // 3. Format Context for AI
-        const habitsContext = habits.map(h => ({
+        const habitsContext = habits.map((h: Habit & { logs: HabitLog[] }) => ({
             name: h.name,
             frequency: h.frequency,
             completionsLast7Days: h.logs.length,
