@@ -7,14 +7,39 @@ import { HabitList } from '@/components/HabitList';
 import { CalendarWidget } from '@/components/CalendarWidget';
 import { NewHabitModal } from '@/components/NewHabitModal';
 import { WeatherWidget } from '@/components/WeatherWidget';
+import { PopularHabitsModal } from '@/components/PopularHabitsModal';
+import { ShouldDoCard } from '@/components/ShouldDoCard';
+import { SpotifyWidget } from '@/components/SpotifyWidget';
+import { AIAssistantCards } from '@/components/AIAssistantCards';
 import { Plus } from 'lucide-react';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPopularModalOpen, setIsPopularModalOpen] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
 
   const handleSuccess = () => {
     setRefreshKey(prev => prev + 1); // Trigger refresh
+  };
+
+  const handleAddPopularHabit = async (name: string) => {
+    try {
+      const response = await fetch('/api/habits', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          frequency: 'daily',
+          description: 'Added from Popular Habits'
+        }),
+      });
+
+      if (response.ok) {
+        handleSuccess();
+      }
+    } catch (error) {
+      console.error('Error adding popular habit:', error);
+    }
   };
 
   return (
@@ -35,7 +60,10 @@ export default function Home() {
               New Habits
             </button>
 
-            <button className="w-full btn-secondary text-lg">
+            <button
+              onClick={() => setIsPopularModalOpen(true)}
+              className="w-full btn-secondary text-lg"
+            >
               Browse Popular Habits
             </button>
 
@@ -46,18 +74,12 @@ export default function Home() {
           <div className="xl:col-span-1 space-y-8">
             <WeatherWidget />
 
-            <div className="bg-white rounded-3xl p-6 shadow-soft">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="font-bold text-text-primary">Should Do!</h3>
-                <button className="text-xs text-text-secondary">View Details</button>
-              </div>
-              <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-2xl">
-                <div className="text-2xl">💪</div>
-                <div>
-                  <div className="font-bold text-text-primary">We go jimmm!!</div>
-                  <div className="text-xs text-text-secondary">4.2k love this</div>
-                </div>
-              </div>
+            <div className="h-64">
+              <ShouldDoCard onAddHabit={handleAddPopularHabit} />
+            </div>
+
+            <div className="h-48">
+              <AIAssistantCards onAddHabit={handleAddPopularHabit} />
             </div>
           </div>
 
@@ -65,19 +87,8 @@ export default function Home() {
           <div className="xl:col-span-1 space-y-8">
             <HabitList key={refreshKey} />
 
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-6 shadow-soft">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl">
-                  Spotify
-                </div>
-                <div>
-                  <h3 className="font-bold text-text-primary">Connect your<br />Spotify account</h3>
-                </div>
-              </div>
-              <p className="text-xs text-text-secondary mb-4">Empower yourself with habit tracking while enjoying uninterrupted music</p>
-              <button className="w-full bg-black text-white py-3 rounded-xl font-medium text-sm hover:bg-gray-800 transition-colors">
-                Link Account
-              </button>
+            <div className="h-48">
+              <SpotifyWidget />
             </div>
           </div>
         </div>
@@ -86,6 +97,12 @@ export default function Home() {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           onSuccess={handleSuccess}
+        />
+
+        <PopularHabitsModal
+          isOpen={isPopularModalOpen}
+          onClose={() => setIsPopularModalOpen(false)}
+          onAddHabit={handleAddPopularHabit}
         />
       </main>
     </div>
